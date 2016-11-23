@@ -65,4 +65,12 @@ if __name__ == '__main__':
               # move('bbb', 'ccc', 0, 0) returns 'b'.
               my_score=0, 
               their_score=0,
-              result='b')             
+              result='b') 
+            
+# Test 1
+    if test_move(my_history='',
+                 their_history='',
+                 my_score=0,
+                 their_score=0,
+                 result='b'):
+        print 'Test passed'
