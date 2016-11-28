@@ -1,3 +1,4 @@
+import random
 ####
 # Each team's file must define four tokens:
 #     team_name: The Deportees
@@ -67,10 +68,14 @@ if __name__ == '__main__':
               their_score=0,
               result='b') 
             
-# Test 1
-    if test_move(my_history='',
-                 their_history='',
-                 my_score=0,
-                 their_score=0,
-                 result='b'):
-        print 'Test passed'
+
+        
+# Test 2
+def strategy(self, opponent):
+        if len(opponent.history) == 0:
+            return random.choice(['c', 'b'])
+        p = sum([s == 'c' for s in opponent.history]) / len(opponent.history)
+        rnd_num = random.random()
+        if rnd_num < p:
+            return 'c'
+        return 'b'   
