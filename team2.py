@@ -2,14 +2,14 @@ import random
 ####
 # Each team's file must define four tokens:
 #     team_name: The Deportees
-#     strategy_name: a string
-#     strategy_description: a string
+#     strategy_name: gang^2
+#     strategy_description: betrays once then repents if punished
 #     move: A function that returns 'c' or 'b'
 ####
 
-team_name = 'The name the team gives to itself' # Only 10 chars displayed.
-strategy_name = 'The name the team gives to this strategy'
-strategy_description = 'How does this strategy decide?'
+team_name = 'The Deportees' # Only 10 chars displayed.
+strategy_name = 'gang^2'
+strategy_description = 'betrays once then repents if punished'
     
 def move(my_history, their_history, my_score, their_score):
     ''' Arguments accepted: my_history, their_history are strings.
@@ -71,11 +71,21 @@ if __name__ == '__main__':
 
         
 # Test 2
-def strategy(self, opponent):
-        if len(opponent.history) == 0:
-            return random.choice(['c', 'b'])
-        p = sum([s == 'c' for s in opponent.history]) / len(opponent.history)
+def move(my_history, their_history, my_score, their_score):
+        if len(their_history) == 0:
+            return 'c'
+        p = sum([s == 'c' for s in their_history]) / len(their_history)
         rnd_num = random.random()
         if rnd_num < p:
             return 'c'
-        return 'b'   
+        return 'b'
+        
+#Test 3
+def move(my_history, their_history, my_score, their_score):
+    if len(my_history) < 2:
+        return "c" 
+    if 'b' not in their_history:
+        return 'b'
+    if their_history[-1] == 'b' and my_history[-2] == 'b':
+        return "c"
+    return their_history
